@@ -1,0 +1,8 @@
+{
+  "name": "MB MEDICINE - Global Medical Knowledge Platform",
+  "description": "A premium, authoritative, and future-ready medical ecosystem for 2026, providing multilingual medical knowledge, AI-driven insights, and clinical tools.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
