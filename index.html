@@ -1,134 +1,210 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MB MEDICINE | Global Medical Knowledge Platform</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="MB Medicine Scientific Archive - International Clinical Authority Platform. Verified high-fidelity anatomical frameworks and medical repositories." />
+    <meta name="keywords" content="Medical Archive, Anatomy, Clinical Research, Medical AI, Healthcare Education" />
+    <meta name="author" content="MB MEDICINE" />
+    <title>MB MEDICINE | Global Scientific Archive</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              medical: {
-                950: '#020617', // Deep Navy Charcoal
-                900: '#0a0f1d',
-                800: '#111827',
-                accent: '#10b981', // Emerald
-                teal: '#14b8a6',
-                gold: '#d4af37',
-              }
-            },
-            fontFamily: {
-              sans: ['Plus Jakarta Sans', 'sans-serif'],
-              arabic: ['Noto Sans Arabic', 'sans-serif'],
-            }
-          }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600;900&family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Cairo:wght@600;700;900&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --dark-deep: #05070a;
+        --neon-green: #00ffaa;
+        --neon-glow: rgba(0, 255, 170, 0.4);
+        --glass-bg: rgba(22, 27, 34, 0.7);
+        --glass-border: rgba(0, 255, 170, 0.15);
+        --text-main: #e6edf3;
+        --text-dim: #8b949e;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--dark-deep);
+        color: var(--text-main);
+        margin: 0;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        scroll-behavior: smooth;
+      }
+
+      /* Fluid Typography Systems */
+      h1, .hero-title {
+        font-family: 'Exo 2', sans-serif;
+        font-size: clamp(2rem, 7vw, 5.5rem);
+        line-height: 1.05;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -0.03em;
+      }
+
+      h2, .section-title {
+        font-family: 'Exo 2', sans-serif;
+        font-size: clamp(1.5rem, 4vw, 3rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+      }
+
+      /* Cyber-Medical Styling */
+      .neon-glow-text {
+        color: var(--neon-green);
+        text-shadow: 0 0 25px var(--neon-glow);
+      }
+
+      .medical-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 420px; /* Reduced to be more compact/consistent */
+        overflow: hidden;
+        position: relative;
+        align-self: flex-start; /* Prevents vertical stretching in flex layouts */
+      }
+
+      .medical-card:hover {
+        border-color: var(--neon-green);
+        box-shadow: 0 0 30px -5px var(--neon-glow);
+        transform: translateY(-8px);
+      }
+
+      .card-image-container {
+        height: 180px; /* Smaller, consistent image height */
+        width: 100%;
+        flex-shrink: 0;
+        background: #000;
+        overflow: hidden;
+      }
+
+      .card-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.75;
+        transition: 0.6s ease;
+      }
+
+      .medical-card:hover img {
+        opacity: 1;
+        transform: scale(1.08);
+      }
+
+      .card-body {
+        padding: 1.25rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-description {
+        display: -webkit-box;
+        -webkit-line-clamp: 4; /* More compact text */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: var(--text-dim);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: auto;
+      }
+
+      /* Touch-Friendly Haptic Buttons */
+      .btn-haptic {
+        min-height: 48px;
+        min-width: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 24px;
+        border-radius: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 0.8rem;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .btn-neon {
+        background: var(--neon-green);
+        color: black;
+        box-shadow: 0 0 15px var(--neon-glow);
+      }
+
+      .btn-neon:hover {
+        background: white;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        transform: scale(1.02);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 1px solid var(--glass-border);
+        color: var(--text-main);
+      }
+
+      /* RTL Support */
+      [lang="ar"] body {
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
+      }
+      [lang="ar"] .brand-heading, [lang="ar"] h1, [lang="ar"] h2 {
+        font-family: 'Cairo', sans-serif;
+      }
+
+      /* Compact Fluid Layouts */
+      .scientific-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Smaller grid squares */
+        gap: 1.5rem;
+        width: 100%;
+        align-items: flex-start; /* Consistent with user request */
+      }
+
+      @media (max-width: 768px) {
+        .scientific-grid {
+          grid-template-columns: 1fr;
+        }
+        .medical-card {
+          min-height: auto;
         }
       }
-    </script>
-    <style>
-        body {
-            background-color: #020617;
-            color: #f8fafc;
-            overflow-x: hidden;
-            position: relative;
-            letter-spacing: -0.01em;
-        }
-        
-        /* High-End Cinematic Background Layer */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: 
-                radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.04) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(20, 184, 166, 0.04) 0%, transparent 40%),
-                linear-gradient(to bottom, #020617 0%, #0a0f1d 100%);
-            z-index: -2;
-        }
 
-        /* Subtle Film Grain for Premium Texture */
-        .medical-texture {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
-            opacity: 0.15;
-            z-index: -1;
-            pointer-events: none;
-            mix-blend-mode: overlay;
-        }
-
-        .rtl {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            direction: rtl;
-        }
-        .glass-dark {
-            background: rgba(2, 6, 23, 0.85);
-            backdrop-filter: blur(30px) saturate(150%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-        }
-        .luxury-border {
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .gold-accent-border {
-            border: 1px solid rgba(212, 175, 55, 0.15);
-        }
-        
-        @keyframes pulse-slow {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.05); }
-        }
-
-        .bg-orb {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
-            filter: blur(100px);
-            z-index: -1;
-            pointer-events: none;
-            animation: pulse-slow 15s infinite ease-in-out;
-        }
-
-        /* Standardized spacing and transitions */
-        .transition-premium {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #020617;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #10b981;
-        }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--dark-deep);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #161b22;
+        border-radius: 10px;
+      }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "@google/genai": "https://esm.sh/@google/genai@^1.37.0"
+      }
+    }
+    </script>
+  <link rel="stylesheet" href="/index.css">
 </head>
-<body class="font-sans antialiased">
-    <div class="medical-texture"></div>
-    <div class="bg-orb" style="top: -10%; right: -5%;"></div>
-    <div class="bg-orb" style="bottom: -10%; left: -5%; animation-delay: -5s;"></div>
+  <body>
     <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>
